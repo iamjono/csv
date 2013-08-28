@@ -39,29 +39,30 @@ Sample Usage
 ============
 
 
-local(fieldnames = array('Color','Number','Size'))
-local(data = array(
-    array('Red',1,'small'),
-    array('Green',2,'medium'),
-    array('Blue',3,'large'),
-    array('Black',4,'extra large with "some" quotes')
-  )
-)
- 
-local(stuff = csv(
-    -fields   = #fieldnames,
-    -rows     = #data,
-    -titlerow = true
-  )
-)
+    local(fieldnames = array('Color','Number','Size'))
+    
+    local(data = array(
+        array('Red',1,'small'),
+        array('Green',2,'medium'),
+        array('Blue',3,'large'),
+        array('Black',4,'extra large with "some" quotes')
+      )
+    )
      
-#stuff->addrow(array('Orange',5,'tiny'))
-
-#stuff->save('atestfile.csv')
- 
-#stuff = csv
-#stuff->load('atestfile.csv')
-#stuff->output
+    local(stuff = csv(
+        -fields   = #fieldnames,
+        -rows     = #data,
+        -titlerow = true
+    )
+    )
+    
+    #stuff->addrow(array('Orange',5,'tiny'))
+    
+    #stuff->save('atestfile.csv')
+     
+    #stuff = csv
+    #stuff->load('atestfile.csv')
+    #stuff->output
 
 
 Credits
