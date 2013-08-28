@@ -19,8 +19,8 @@ Properties
 ->filename - String, the name to use when saving the file. Defaults to "results.csv."
 
 
-Member Tags/Methods
-===================
+Methods
+=======
 
 ->parseline - Parses an individual line of a loaded file. Used internally by ->load.
 
@@ -33,3 +33,39 @@ Member Tags/Methods
 ->serve - Serves a CSV file to the browser using the csv mime type and filename supplied.
 
 ->addrow - Accepts an array to add to ->rows.
+
+
+Sample Usage
+============
+
+
+local(fieldnames = array('Color','Number','Size'))
+local(data = array(
+    array('Red',1,'small'),
+    array('Green',2,'medium'),
+    array('Blue',3,'large'),
+    array('Black',4,'extra large with "some" quotes')
+  )
+)
+ 
+local(stuff = csv(
+    -fields   = #fieldnames,
+    -rows     = #data,
+    -titlerow = true
+  )
+)
+     
+#stuff->addrow(array('Orange',5,'tiny'))
+
+#stuff->save('atestfile.csv')
+ 
+#stuff = csv
+#stuff->load('atestfile.csv')
+#stuff->output
+
+
+Credits
+=======
+
+Maintained by Jonathan Guthrie, jono@treefrog.ca
+Thanks must go out to Jason Huck who published the original pre-Lasso 9 version at http://www.lassosoft.com/tagswap/detail/csv
